@@ -1,6 +1,6 @@
 import path from 'path';
-import parse from '../src/parser.js';
 import _ from 'lodash';
+import parse from './parser.js';
 
 const compareData = (path1, path2) => {
   const filepath1 = path.resolve(process.cwd(), path1);
@@ -12,16 +12,17 @@ const compareData = (path1, path2) => {
     if (Object.hasOwn(file1, key) && !Object.hasOwn(file2, key)) {
       acc = `${acc}  - ${key}: ${file1[key]}\n`;
       return acc;
-    } else if (!Object.hasOwn(file1, key) && Object.hasOwn(file2, key)) {
+    }
+    if (!Object.hasOwn(file1, key) && Object.hasOwn(file2, key)) {
       acc = `${acc}  + ${key}: ${file2[key]}\n`;
       return acc;
-    } else if (file1[key] === file2[key]) {
+    }
+    if (file1[key] === file2[key]) {
       acc = `${acc}    ${key}: ${file1[key]}\n`;
       return acc;
-    } else {
-      acc = `${acc}  - ${key}: ${file1[key]}\n  + ${key}: ${file2[key]}\n`;
-      return acc;
     }
+    acc = `${acc}  - ${key}: ${file1[key]}\n  + ${key}: ${file2[key]}\n`;
+    return acc;
   }, '')}}`;
   return diff;
 };
