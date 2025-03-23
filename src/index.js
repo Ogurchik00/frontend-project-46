@@ -1,3 +1,3 @@
-import genDiff from '../bin/gendiff.js';
+import compareData from './compareData.js';
 
-export default genDiff;
+export default compareData;
