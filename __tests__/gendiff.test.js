@@ -1,3 +1,4 @@
+import { test, expect } from '@jest/globals';
 import compareData from '../src/compareData.js';
 import fs from 'fs';
 import path from 'path';
