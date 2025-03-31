@@ -11,7 +11,7 @@ const getIndent = (depth, leftShift = 2, spacesCount = 4) => depth * spacesCount
 
 const stringifyValue = (value, depth) => {
   function process(iterValue, iterDepth) {
-    if (_.isPlainObject(iterValue)) {
+    if (!_.isObject(iterValue)) {
       return `${iterValue}`;
     }
 
