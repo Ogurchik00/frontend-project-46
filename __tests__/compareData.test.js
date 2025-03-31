@@ -1,5 +1,5 @@
 import { test, expect } from '@jest/globals';
-import compareData from '../src/compareData.js';
+import compareData from '../index.js';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -12,12 +12,19 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 test('flat comparison', () => {
-  const json1 = getFixturePath('file1.json');
-  const json2 = getFixturePath('file2.json');
-  const yml1 = getFixturePath('file1.yml');
-  const yml2 = getFixturePath('file2.yml');
-  const result = readFile('flatResult.txt');
+  const json1 = getFixturePath('flatFiles/file1.json');
+  const json2 = getFixturePath('flatFiles/file2.json');
+  const yml1 = getFixturePath('flatFiles/file1.yml');
+  const yml2 = getFixturePath('flatFiles/file2.yml');
+  const result = readFile('flatFiles/flatResult.txt');
   expect(compareData(json1, json2)).toEqual(result);
   expect(compareData(yml1, yml2)).toEqual(result);
   expect(compareData(json1, yml2)).toEqual(result);
+});
+
+test('nested comparison', () => {
+  const json1 = getFixturePath('nestedFiles/file1.json');
+  const json2 = getFixturePath('nestedFiles/file2.json');
+  const result = readFile('nestedFiles/nestedResult.txt');
+  expect(compareData(json1, json2)).toEqual(result);
 });
