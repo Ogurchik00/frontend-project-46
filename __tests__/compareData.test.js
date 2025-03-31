@@ -25,6 +25,8 @@ test('flat comparison', () => {
 test('nested comparison', () => {
   const json1 = getFixturePath('nestedFiles/file1.json');
   const json2 = getFixturePath('nestedFiles/file2.json');
-  const result = readFile('nestedFiles/nestedResult.txt');
-  expect(compareData(json1, json2)).toEqual(result);
+  const resultStylish = readFile('nestedFiles/nestedResultStylish.txt');
+  const resultPlain = readFile('nestedFiles/nestedResultPlain.txt');
+  expect(compareData(json1, json2)).toEqual(resultStylish);
+  expect(compareData(json1, json2, 'plain')).toEqual(resultPlain);
 });

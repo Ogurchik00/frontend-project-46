@@ -1,7 +1,7 @@
 import path from 'path';
 import _ from 'lodash';
 import parse from './parsers.js';
-import formStylish from './formatters.js';
+import formatData from './formatters/index.js';
 
 const buildOutput = (obj1, obj2) => {
   const keys = _.union(Object.keys(obj1), Object.keys(obj2)).sort();
@@ -23,7 +23,7 @@ const buildOutput = (obj1, obj2) => {
   return output;
 };
 
-const compareData = (path1, path2) => {
+const compareData = (path1, path2, format = 'stylish') => {
   const filepath1 = path.resolve(process.cwd(), path1);
   const filepath2 = path.resolve(process.cwd(), path2);
   const file1Extesion = path.extname(path1);
@@ -31,7 +31,7 @@ const compareData = (path1, path2) => {
   const file1 = parse(filepath1, file1Extesion);
   const file2 = parse(filepath2, file2Extesion);
   const diff = buildOutput(file1, file2);
-  return formStylish(diff, 1);
+  return formatData(diff, format);
 };
 
 export default compareData;
