@@ -12,5 +12,5 @@ jobs:
       - run: make test
       - uses: qltysh/qlty-action/coverage@main
         with:
-        coverage-token: { { secrets.QLTY_COVERAGE_TOKEN } }
+        env: { { secrets.QLTY_COVERAGE_TOKEN } }
         files: coverage/lcov.info
