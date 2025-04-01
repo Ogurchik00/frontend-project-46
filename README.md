@@ -8,6 +8,10 @@
 
 [![gendiff](https://github.com/v-semyashkina/frontend-project-46/actions/workflows/gendiff.yml/badge.svg)](https://github.com/v-semyashkina/frontend-project-46/actions/workflows/gendiff.yml)
 
+### Maintainability:
+
+[![Maintainability](https://qlty.sh/badges/948160a8-41b4-4869-ba77-7bb5b14cbdf7/maintainability.svg)](https://qlty.sh/gh/v-semyashkina/projects/frontend-project-46)
+
 ## Минимальные требования:
 
 - Node.js последней версии
@@ -15,7 +19,7 @@
 - make
 - Commander.js
 - Lodash
--
+- js-yaml
 
 ## Установка:
 
@@ -31,3 +35,7 @@ make install
 ## Демонстрация сравнения плоских файлов:
 
 [![asciicast](https://asciinema.org/a/yDOx3T0NHvnixY9oPB6HisNf5.svg)](https://asciinema.org/a/yDOx3T0NHvnixY9oPB6HisNf5)
+
+## Демонстрация сравнения вложенных файлов:
+
+[![asciicast](https://asciinema.org/a/6z4oOVdURR20yNKYD1CADBJwE.svg)](https://asciinema.org/a/6z4oOVdURR20yNKYD1CADBJwE)

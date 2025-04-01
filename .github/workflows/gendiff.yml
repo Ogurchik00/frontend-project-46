@@ -7,6 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: qltysh/qlty-action/coverage@main
+        with:
+          coverage-token: { { secrets.QLTY_COVERAGE_TOKEN } }
+          files: coverage/lcov.info
       - run: make install
       - run: make lint
       - run: make test
