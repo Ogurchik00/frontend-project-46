@@ -29,7 +29,7 @@ const stringifyValue = (value, depth) => {
   return process(value, depth);
 };
 
-const formStylish = (value, depth) => {
+const formStylish = (value, depth = 1) => {
   const indentSize = getIndent(depth);
   const currentIndent = ' '.repeat(indentSize);
   const bracketIndent = ' '.repeat(indentSize - 2);
