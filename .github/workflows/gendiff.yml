@@ -10,7 +10,10 @@ jobs:
       - run: make install
       - run: make lint
       - run: make test
-      - uses: qltysh/qlty-action/coverage@main
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{secrets.QLTY_COVERAGE_TOKEN }}
         with:
-        env: { { secrets.QLTY_COVERAGE_TOKEN } }
-        files: coverage/lcov.info
+          coverageCommand: make test-coverage
+          debug: true
