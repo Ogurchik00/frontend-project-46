@@ -11,7 +11,7 @@ jobs:
       - run: make lint
       - run: make test
       - name: Test & publish code coverage
-      - uses: qltysh/qlty-action/coverage@main
-  with:
-    coverage-token: { { secrets.QLTY_COVERAGE_TOKEN } }
-    files: coverage/lcov.info
+        uses: qltysh/qlty-action/coverage@main
+        with:
+        env: { { secrets.QLTY_COVERAGE_TOKEN } }
+        files: coverage/lcov.info
