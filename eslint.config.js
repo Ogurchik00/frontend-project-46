@@ -7,7 +7,8 @@ export default defineConfig([
     settings: {
       'import/resolver': {
         node: {
-          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+          extensions: ['.js', '.jsx'],
+          moduleDirectory: ['node_modules', 'src/'],
         },
       },
     },
