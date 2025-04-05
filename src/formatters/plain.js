@@ -26,8 +26,7 @@ const formPlain = (value, parent = '') => {
         return `Property '${parent}${entry.key}' was updated. From ${formatValue(
           entry.oldValue,
         )} to ${formatValue(entry.newValue)}`;
-      }
-      if (entry.type === 'nested') {
+      } else if (entry.type === 'nested') {
         return formPlain(entry.children, `${parent}${entry.key}.`);
       }
     });

@@ -10,8 +10,7 @@ const formatData = (data, format) => {
   }
   if (format === 'plain') {
     return formPlain(data);
-  }
-  if (format === 'json') {
+  } else if (format === 'json') {
     return formJson(data);
   }
 };
