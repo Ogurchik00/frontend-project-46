@@ -1,3 +1,5 @@
+/* consistent-return: "off", array-callback-return: "off" */
+
 import _ from 'lodash';
 
 const formatValue = (value) => {

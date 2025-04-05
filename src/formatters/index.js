@@ -1,3 +1,5 @@
+/* consistent-return: "off" */
+
 import formStylish from './stylish.js';
 import formPlain from './plain.js';
 import formJson from './json.js';
