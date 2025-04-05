@@ -1,17 +1,17 @@
-/* consistent-return: "off" */
-
 import formStylish from './stylish.js';
 import formPlain from './plain.js';
 import formJson from './json.js';
 
 const formatData = (data, format) => {
-  if (format === 'stylish') {
-    return formStylish(data);
-  }
-  if (format === 'plain') {
-    return formPlain(data);
-  } else if (format === 'json') {
-    return formJson(data);
+  switch (format) {
+    case 'stylish':
+      return formStylish(data);
+    case 'plain':
+      return formPlain(data);
+    case 'json':
+      return formJson(data);
+    default:
+      throw new Error(`Unknown format: '${format}'!`);
   }
 };
 
