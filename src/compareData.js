@@ -1,8 +1,9 @@
 import _ from 'lodash';
 
 const compareData = (data1, data2) => {
-  const keys = _.union(Object.keys(data1), Object.keys(data2)).sort();
-  const output = keys.map((key) => {
+  const keys = _.union(Object.keys(data1), Object.keys(data2));
+  const sortedKeys = _.sortBy(keys);
+  const output = sortedKeys.map((key) => {
     if (!Object.hasOwn(data2, key)) {
       return { key, type: 'removed', value: data1[key] };
     }

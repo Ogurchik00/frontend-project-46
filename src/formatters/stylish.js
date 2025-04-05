@@ -35,27 +35,22 @@ const formStylish = (value, depth = 1) => {
   const bracketIndent = ' '.repeat(indentSize - 2);
 
   const result = value.map((entry) => {
-    {
-      if (entry.type === 'changed') {
-        return `${currentIndent}${signs.removed}${entry.key}: ${stringifyValue(
-          entry.oldValue,
-          depth + 1,
-        )}\n${currentIndent}${signs.added}${entry.key}: ${stringifyValue(
-          entry.newValue,
-          depth + 1,
-        )}`;
-      }
-      if (entry.type === 'nested') {
-        return `${currentIndent}${signs[entry.type]}${entry.key}: ${formStylish(
-          entry.children,
-          depth + 1,
-        )}`;
-      }
-      return `${currentIndent}${signs[entry.type]}${entry.key}: ${stringifyValue(
-        entry.value,
+    if (entry.type === 'changed') {
+      return `${currentIndent}${signs.removed}${entry.key}: ${stringifyValue(
+        entry.oldValue,
+        depth + 1,
+      )}\n${currentIndent}${signs.added}${entry.key}: ${stringifyValue(entry.newValue, depth + 1)}`;
+    }
+    if (entry.type === 'nested') {
+      return `${currentIndent}${signs[entry.type]}${entry.key}: ${formStylish(
+        entry.children,
         depth + 1,
       )}`;
     }
+    return `${currentIndent}${signs[entry.type]}${entry.key}: ${stringifyValue(
+      entry.value,
+      depth + 1,
+    )}`;
   });
 
   return ['{', ...result, `${bracketIndent}}`].join('\n');

@@ -5,7 +5,7 @@ const formatValue = (value) => {
     return `'${value}'`;
   }
   if (_.isObject(value)) {
-    return `[complex value]`;
+    return '[complex value]';
   }
   return value;
 };
