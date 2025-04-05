@@ -12,6 +12,13 @@
 
 [![Maintainability](https://qlty.sh/badges/948160a8-41b4-4869-ba77-7bb5b14cbdf7/maintainability.svg)](https://qlty.sh/gh/v-semyashkina/projects/frontend-project-46)
 
+Вычислитель отличий – программа, определяющая разницу между двумя структурами данных.
+
+Возможности утилиты:
+
+- Поддержка разных входных форматов: yaml, json
+- Генерация отчета в виде plain text, stylish и json
+
 ## Минимальные требования:
 
 - Node.js последней версии
