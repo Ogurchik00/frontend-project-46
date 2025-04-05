@@ -6,8 +6,10 @@ export default defineConfig([
   {
     rules: {
       eqeqeq: 'off',
-      'consistent-return': 'warn',
-      'array-callback-return': 'warn',
+      'consistent-return': 'off',
+      'array-callback-return': 'off',
+      'import/no-named-default': 'off',
+      'import/no-unresolved': 'off',
     },
   },
   { files: ['**/*.{js,mjs,cjs}'] },
