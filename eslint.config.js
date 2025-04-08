@@ -14,10 +14,17 @@ const compat = new FlatCompat({
 });
 
 export default [
-  { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
+  {
+    languageOptions: {
+      parserOptions: { ecmaVersion: 2020 },
+      globals: { ...globals.browser, ...globals.node },
+    },
+  },
   ...compat.extends('airbnb'),
   {
     rules: {
+      'no-underscore-dangle': [2, { allow: ['__filename', '__dirname'] }],
+      'import/no-extraneous-dependencies': 0,
       'no-console': 0,
       'import/extensions': 0,
     },
