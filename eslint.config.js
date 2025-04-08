@@ -14,7 +14,7 @@ const compat = new FlatCompat({
 });
 
 export default [
-  { languageOptions: { globals: { globals: globals.node } } },
+  { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
   ...compat.extends('airbnb'),
   {
     rules: {
