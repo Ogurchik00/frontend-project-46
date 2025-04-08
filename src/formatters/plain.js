@@ -10,7 +10,7 @@ const formatValue = (value) => {
   return value;
 };
 
-const formPlain = (value, parent = '') => {
+const formatPlain = (value, parent = '') => {
   const result = value
     .filter((entry) => entry.type !== 'unchanged')
     .map((entry) => {
@@ -26,7 +26,7 @@ const formPlain = (value, parent = '') => {
             entry.oldValue,
           )} to ${formatValue(entry.newValue)}`;
         case 'nested':
-          return formPlain(entry.children, `${parent}${entry.key}.`);
+          return formatPlain(entry.children, `${parent}${entry.key}.`);
         default:
           throw new Error(`Unknown entry type: '${entry.type}'!`);
       }
@@ -35,4 +35,4 @@ const formPlain = (value, parent = '') => {
   return result.join('\n');
 };
 
-export default formPlain;
+export default formatPlain;

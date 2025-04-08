@@ -29,31 +29,39 @@ const stringifyValue = (value, depth) => {
   return process(value, depth);
 };
 
-const formStylish = (value, depth = 1) => {
+const formatStylish = (value, depth = 1) => {
   const indentSize = getIndent(depth);
   const currentIndent = ' '.repeat(indentSize);
   const bracketIndent = ' '.repeat(indentSize - 2);
 
   const result = value.map((entry) => {
-    if (entry.type === 'changed') {
-      return `${currentIndent}${signs.removed}${entry.key}: ${stringifyValue(
-        entry.oldValue,
-        depth + 1,
-      )}\n${currentIndent}${signs.added}${entry.key}: ${stringifyValue(entry.newValue, depth + 1)}`;
+    switch (entry.type) {
+      case 'removed':
+      case 'added':
+      case 'unchanged':
+        return `${currentIndent}${signs[entry.type]}${entry.key}: ${stringifyValue(
+          entry.value,
+          depth + 1,
+        )}`;
+      case 'changed':
+        return `${currentIndent}${signs.removed}${entry.key}: ${stringifyValue(
+          entry.oldValue,
+          depth + 1,
+        )}\n${currentIndent}${signs.added}${entry.key}: ${stringifyValue(
+          entry.newValue,
+          depth + 1,
+        )}`;
+      case 'nested':
+        return `${currentIndent}${signs[entry.type]}${entry.key}: ${formatStylish(
+          entry.children,
+          depth + 1,
+        )}`;
+      default:
+        throw new Error(`Unknown entry type: '${entry.type}'!`);
     }
-    if (entry.type === 'nested') {
-      return `${currentIndent}${signs[entry.type]}${entry.key}: ${formStylish(
-        entry.children,
-        depth + 1,
-      )}`;
-    }
-    return `${currentIndent}${signs[entry.type]}${entry.key}: ${stringifyValue(
-      entry.value,
-      depth + 1,
-    )}`;
   });
 
   return ['{', ...result, `${bracketIndent}}`].join('\n');
 };
 
-export default formStylish;
+export default formatStylish;

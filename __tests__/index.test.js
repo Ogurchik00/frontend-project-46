@@ -10,13 +10,21 @@ const __dirname = dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-test('nested comparison', () => {
-  const json = getFixturePath('file1.json');
-  const yml = getFixturePath('file2.yml');
+const json = getFixturePath('file1.json');
+const yml = getFixturePath('file2.yml');
+
+test('test stylish format', () => {
   const resultStylish = readFile('resultStylish.txt');
-  const resultPlain = readFile('resultPlain.txt');
-  const resultJSON = readFile('resultJSON.txt');
   expect(genDiff(json, yml)).toEqual(resultStylish);
+  expect(genDiff(json, yml, 'stylish')).toEqual(resultStylish);
+});
+
+test('test plain format', () => {
+  const resultPlain = readFile('resultPlain.txt');
   expect(genDiff(json, yml, 'plain')).toEqual(resultPlain);
+});
+
+test('test JSON format', () => {
+  const resultJSON = readFile('resultJSON.txt');
   expect(genDiff(json, yml, 'json')).toEqual(resultJSON);
 });

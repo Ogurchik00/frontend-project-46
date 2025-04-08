@@ -1,3 +1,3 @@
-const formJson = (data) => JSON.stringify(data);
+const formatJson = (data) => JSON.stringify(data);
 
-export default formJson;
+export default formatJson;
