@@ -5,7 +5,6 @@
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
-
   "license": "ISC",
   "author": "",
   "type": "module",
